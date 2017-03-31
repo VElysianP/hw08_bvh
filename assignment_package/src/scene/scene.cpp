@@ -139,3 +139,4 @@ void Scene::clearBVH()
         bvh = nullptr;
     }
 }
+

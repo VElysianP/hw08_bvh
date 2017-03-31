@@ -10,6 +10,8 @@
 class Intersection;//Forward declaration because Intersection and Geometry cross-include each other
 class Material;
 
+static pcg32 colorRNG;
+
 //Geometry is an abstract class since it contains a pure virtual function (i.e. a virtual function that is set to 0)
 class Shape : public Drawable
 {

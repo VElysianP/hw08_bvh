@@ -1,4 +1,6 @@
 #include <openGL/drawable.h>
+#include <QDateTime>
+pcg32 Drawable::colorRNG = pcg32(QDateTime::currentMSecsSinceEpoch());
 
 Drawable::Drawable()
     : bufIdx(QOpenGLBuffer::IndexBuffer),

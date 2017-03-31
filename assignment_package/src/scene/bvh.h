@@ -17,8 +17,8 @@ public:
     BVHAccel(const std::vector<std::shared_ptr<Primitive>> &p,
              int maxPrimsInNode = 1);
     Bounds3f WorldBound() const;
-    ~BVHAccel();
-    bool Intersect(const Ray &ray, Intersection *isect) const;
+    virtual ~BVHAccel();
+    virtual bool Intersect(const Ray &ray, Intersection *isect) const;
 
 private:
     BVHBuildNode *recursiveBuild(
