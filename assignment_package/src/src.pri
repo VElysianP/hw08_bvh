@@ -45,7 +45,9 @@ SOURCES += \
     $$PWD/integrators/fulllightingintegrator.cpp \
     $$PWD/scene/materials/microfacet.cpp \
     $$PWD/scene/materials/microfacetbrdf.cpp \
-    $$PWD/scene/materials/plasticmaterial.cpp
+    $$PWD/scene/materials/plasticmaterial.cpp \
+    $$PWD/scene/bounds.cpp \
+    $$PWD/scene/bvh.cpp
 
 HEADERS += \
     $$PWD/mainwindow.h \
@@ -92,4 +94,6 @@ HEADERS += \
     $$PWD/integrators/fulllightingintegrator.h \
     $$PWD/scene/materials/microfacet.h \
     $$PWD/scene/materials/microfacetbrdf.h \
-    $$PWD/scene/materials/plasticmaterial.h
+    $$PWD/scene/materials/plasticmaterial.h \
+    $$PWD/scene/bounds.h \
+    $$PWD/scene/bvh.h
