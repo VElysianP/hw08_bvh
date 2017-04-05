@@ -8,6 +8,7 @@ struct BVHBuildNode;
 struct BVHPrimitiveInfo;
 struct MortonPrimitive;
 struct LinearBVHNode;
+struct BucketInfo;
 
 class BVHAccel : public Primitive
 {

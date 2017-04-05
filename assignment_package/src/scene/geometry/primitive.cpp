@@ -32,3 +32,7 @@ const Material* Primitive::GetMaterial() const
 {
     return material.get();
 }
+Bounds3f Primitive::WorldBound() const
+{
+    return shape->WorldBound();
+}

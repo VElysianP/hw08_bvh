@@ -2,6 +2,7 @@
 
 #include <scene/geometry/shape.h>
 
+
 //A Cube is assumed to have a radius of 1 and a center of <0,0,0>.
 //These attributes can be altered by applying a transformation matrix to the Cube.
 class Cube : public Shape

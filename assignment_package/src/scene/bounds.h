@@ -2,6 +2,7 @@
 #include <globals.h>
 #include "transform.h"
 #include <raytracing/ray.h>
+//#include <scene/geometry/cube.h>
 
 
 class Bounds3f
@@ -53,6 +54,8 @@ public:
     // that encompasses the non-axis-aligned box resulting from
     // transforming this Bounds3f's eight corners
     Bounds3f Apply(const Transform& tr);
+
+    bool InsideExclusive(const Point3f &p,const Bounds3f &b);
 
     // Returns the surface area of this bounding box
     float SurfaceArea() const;

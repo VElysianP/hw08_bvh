@@ -116,5 +116,7 @@ Intersection Sphere::Sample(const Point2f &xi, Float *pdf) const
 
 Bounds3f Sphere::WorldBound() const
 {
-    return Bounds3f();
+    Bounds3f basicBox = Bounds3f(Point3f(-1.0,-1.0,-1.0),Point3f(1.0,1.0,1.0));
+
+    return basicBox.Apply(transform);
 }

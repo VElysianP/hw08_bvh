@@ -42,6 +42,8 @@ INPUT(
 ./debug\microfacet.o
 ./debug\microfacetbrdf.o
 ./debug\plasticmaterial.o
+./debug\bounds.o
+./debug\bvh.o
 ./debug\qrc_glsl.o
 ./debug\qrc_sfx.o
 ./debug\moc_mainwindow.o

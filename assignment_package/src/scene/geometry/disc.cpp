@@ -54,5 +54,7 @@ Intersection Disc::Sample(const Point2f &xi, Float *pdf) const
 }
 Bounds3f Disc::WorldBound() const
 {
-    return Bounds3f();
+    Bounds3f basicBox = Bounds3f(Point3f(-1.0,-1.0,-0.5),Point3f(1.0,1.0,0.5));
+
+    return basicBox.Apply(transform);
 }

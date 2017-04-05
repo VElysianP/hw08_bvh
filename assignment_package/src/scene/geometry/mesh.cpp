@@ -6,7 +6,54 @@
 Bounds3f Triangle::WorldBound() const
 {
     //TODO
+    Point3f minimumPoint = Point3f(std::min(std::min(points[0].x,points[1].x),points[2].x),std::min(std::min(points[0].y,points[1].y),points[2].y),std::min(std::min(points[0].z,points[1].z),points[2].z));
+    Point3f maximumPoint = Point3f(std::max(std::max(points[0].x,points[1].x),points[2].x),std::max(std::max(points[0].y,points[1].y),points[2].y),std::max(std::max(points[0].z,points[1].z),points[2].z));
+    Bounds3f basicBox = Bounds3f(minimumPoint,maximumPoint);
+
+    return basicBox.Apply(transform);
 }
+//Bounds3f Mesh::WorldBound() const
+//{
+
+//    float minimunCoorX = INFINITY, minimunCoorY = INFINITY, minimunCoorZ = INFINITY;
+//    float maximunCoorX = -INFINITY, maximunCoorY = -INFINITY, maximunCoorZ = -INFINITY;
+
+//    for(int i=0;i<faces.size();i++)
+//    {
+//        Point3f point_1 = faces[i]->points[0];
+//        Point3f point_2 = faces[i]->points[1];
+//        Point3f point_3 = faces[i]->points[2];
+//        if(std::min(std::min(point_1.x,point_2.x),point_3.x)<minimunCoorX)
+//        {
+//            minimunCoorX = std::min(std::min(point_1.x,point_2.x),point_3.x);
+//        }
+//        if(std::min(std::min(point_1.y,point_2.y),point_3.y)<minimunCoorY)
+//        {
+//            minimunCoorY = std::min(std::min(point_1.y,point_2.y),point_3.y);
+//        }
+//        if(std::min(std::min(point_1.z,point_2.z),point_3.z)<minimunCoorZ)
+//        {
+//            minimunCoorZ = std::min(std::min(point_1.z,point_2.z),point_3.z);
+//        }
+
+//        if(std::max(std::max(point_1.x,point_2.x),point_3.x)<maximunCoorX)
+//        {
+//            maximunCoorX = std::max(std::max(point_1.x,point_2.x),point_3.x);
+//        }
+//        if(std::max(std::max(point_1.y,point_2.y),point_3.y)<maximunCoorY)
+//        {
+//            maximunCoorY = std::max(std::max(point_1.y,point_2.y),point_3.y);
+//        }
+//        if(std::max(std::max(point_1.z,point_2.z),point_3.z)<maximunCoorZ)
+//        {
+//            maximunCoorZ = std::max(std::max(point_1.z,point_2.z),point_3.z);
+//        }
+//    }
+//    Point3f minimumPoint = Point3f(minimunCoorX,minimunCoorY,minimunCoorZ);
+//    Point3f maximumPoint = Point3f(maximunCoorX,maximunCoorY,maximunCoorZ);
+
+//    return Bounds3f(minimumPoint,maximumPoint);
+//}
 
 float Triangle::Area() const
 {
@@ -98,6 +145,9 @@ void Triangle::ComputeTriangleTBN(const Point3f &P, Normal3f *nor, Vector3f *tan
 {
     *nor = GetNormal(P);
     //TODO: Compute tangent and bitangent based on UV coordinates.
+    //TODO: Compute tangent and bitangent based on UV coordinates.
+    *tan = glm::normalize(points[1]-points[0]);
+    *bit = glm::normalize(glm::cross(*nor,*tan));
 }
 
 

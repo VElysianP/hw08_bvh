@@ -54,5 +54,7 @@ Intersection SquarePlane::Sample(const Point2f &xi, Float *pdf) const
 }
 Bounds3f SquarePlane::WorldBound() const
 {
-    return Bounds3f();
+    Bounds3f basicBox = Bounds3f(Point3f(-0.5,-0.5,-0.5),Point3f(0.5,0.5,0.5));
+
+    return basicBox.Apply(transform);
 }

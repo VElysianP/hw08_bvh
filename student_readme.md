@@ -13,3 +13,19 @@ implemented.
 
 ***Render Results***
 
+# PT_wahoo.json #
+
+## Naive 100 samples 5 times  ##
+
+![](http://i.imgur.com/wGWd0e3.png)
+
+Timing (21 min)
+
+![](http://i.imgur.com/3ozV1yZ.jpg)
+
+## Full light 100 samples 5 times ##
+
+## Full light 400 samples 8 times ##
+
+
+# PT_RandomScene.json #

@@ -85,7 +85,9 @@ SOURCES       = ..\assignment_package\src\main.cpp \
 		..\assignment_package\src\integrators\fulllightingintegrator.cpp \
 		..\assignment_package\src\scene\materials\microfacet.cpp \
 		..\assignment_package\src\scene\materials\microfacetbrdf.cpp \
-		..\assignment_package\src\scene\materials\plasticmaterial.cpp release\qrc_glsl.cpp \
+		..\assignment_package\src\scene\materials\plasticmaterial.cpp \
+		..\assignment_package\src\scene\bounds.cpp \
+		..\assignment_package\src\scene\bvh.cpp release\qrc_glsl.cpp \
 		release\qrc_sfx.cpp \
 		release\moc_mainwindow.cpp \
 		release\moc_mygl.cpp \
@@ -134,6 +136,8 @@ OBJECTS       = release/main.o \
 		release/microfacet.o \
 		release/microfacetbrdf.o \
 		release/plasticmaterial.o \
+		release/bounds.o \
+		release/bvh.o \
 		release/qrc_glsl.o \
 		release/qrc_sfx.o \
 		release/moc_mainwindow.o \
@@ -185,7 +189,9 @@ DIST          =  ..\assignment_package\src\mainwindow.h \
 		..\assignment_package\src\integrators\fulllightingintegrator.h \
 		..\assignment_package\src\scene\materials\microfacet.h \
 		..\assignment_package\src\scene\materials\microfacetbrdf.h \
-		..\assignment_package\src\scene\materials\plasticmaterial.h ..\assignment_package\src\main.cpp \
+		..\assignment_package\src\scene\materials\plasticmaterial.h \
+		..\assignment_package\src\scene\bounds.h \
+		..\assignment_package\src\scene\bvh.h ..\assignment_package\src\main.cpp \
 		..\assignment_package\src\mainwindow.cpp \
 		..\assignment_package\src\mygl.cpp \
 		..\assignment_package\src\scene\camera.cpp \
@@ -227,7 +233,9 @@ DIST          =  ..\assignment_package\src\mainwindow.h \
 		..\assignment_package\src\integrators\fulllightingintegrator.cpp \
 		..\assignment_package\src\scene\materials\microfacet.cpp \
 		..\assignment_package\src\scene\materials\microfacetbrdf.cpp \
-		..\assignment_package\src\scene\materials\plasticmaterial.cpp
+		..\assignment_package\src\scene\materials\plasticmaterial.cpp \
+		..\assignment_package\src\scene\bounds.cpp \
+		..\assignment_package\src\scene\bvh.cpp
 QMAKE_TARGET  = 277
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = 277.exe
@@ -266,7 +274,7 @@ dist:
 	$(ZIP) 277.zip $(SOURCES) $(DIST) ..\assignment_package\pathtracer.pro D:\QT\5.4\mingw491_32\mkspecs\features\spec_pre.prf D:\QT\5.4\mingw491_32\mkspecs\qdevice.pri D:\QT\5.4\mingw491_32\mkspecs\features\device_config.prf D:\QT\5.4\mingw491_32\mkspecs\common\shell-win32.conf D:\QT\5.4\mingw491_32\mkspecs\qconfig.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axbase.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axbase_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axcontainer.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axserver.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_axserver_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_bluetooth.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_clucene_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_concurrent.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_core.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_core_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_dbus.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_dbus_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_declarative.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_declarative_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_designer.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_designer_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_enginio.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_enginio_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_gui.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_gui_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_help.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_help_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_location.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_location_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_multimedia.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_network.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_network_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_nfc.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_nfc_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_opengl.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_opengl_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_openglextensions.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_platformsupport_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_positioning.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_positioning_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_printsupport.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qml.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qml_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qmltest.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_quick.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_quick_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_script.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_script_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_scripttools.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_sensors.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_sensors_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_serialport.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_serialport_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_sql.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_sql_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_svg.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_svg_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_testlib.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_testlib_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_uitools.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_uitools_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webchannel.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webkit.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webkit_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webkitwidgets.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_webkitwidgets_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_websockets.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_websockets_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_widgets.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_widgets_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_winextras.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_winextras_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_xml.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_xml_private.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\QT\5.4\mingw491_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\QT\5.4\mingw491_32\mkspecs\features\qt_functions.prf D:\QT\5.4\mingw491_32\mkspecs\features\qt_config.prf D:\QT\5.4\mingw491_32\mkspecs\features\win32\qt_config.prf D:\QT\5.4\mingw491_32\mkspecs\win32-g++\qmake.conf D:\QT\5.4\mingw491_32\mkspecs\features\spec_post.prf D:\QT\5.4\mingw491_32\mkspecs\features\exclusive_builds.prf D:\QT\5.4\mingw491_32\mkspecs\features\default_pre.prf D:\QT\5.4\mingw491_32\mkspecs\features\win32\default_pre.prf ..\assignment_package\src\src.pri D:\QT\5.4\mingw491_32\mkspecs\features\resolve_config.prf D:\QT\5.4\mingw491_32\mkspecs\features\exclusive_builds_post.prf D:\QT\5.4\mingw491_32\mkspecs\features\default_post.prf D:\QT\5.4\mingw491_32\mkspecs\features\build_pass.prf D:\QT\5.4\mingw491_32\mkspecs\features\win32\console.prf D:\QT\5.4\mingw491_32\mkspecs\features\c++11.prf D:\QT\5.4\mingw491_32\mkspecs\features\qml_debug.prf D:\QT\5.4\mingw491_32\mkspecs\features\win32\rtti.prf D:\QT\5.4\mingw491_32\mkspecs\features\precompile_header.prf D:\QT\5.4\mingw491_32\mkspecs\features\qt.prf D:\QT\5.4\mingw491_32\mkspecs\features\resources.prf D:\QT\5.4\mingw491_32\mkspecs\features\moc.prf D:\QT\5.4\mingw491_32\mkspecs\features\win32\opengl.prf D:\QT\5.4\mingw491_32\mkspecs\features\uic.prf D:\QT\5.4\mingw491_32\mkspecs\features\testcase_targets.prf D:\QT\5.4\mingw491_32\mkspecs\features\exceptions.prf D:\QT\5.4\mingw491_32\mkspecs\features\yacc.prf D:\QT\5.4\mingw491_32\mkspecs\features\lex.prf ..\assignment_package\pathtracer.pro ..\assignment_package\glsl.qrc ..\assignment_package\sfx.qrc D:/QT/5.4/mingw491_32/lib/Qt5Widgets.prl D:/QT/5.4/mingw491_32/lib/Qt5Multimedia.prl D:/QT/5.4/mingw491_32/lib/Qt5Gui.prl D:/QT/5.4/mingw491_32/lib/Qt5Network.prl D:/QT/5.4/mingw491_32/lib/Qt5Core.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.o release\mainwindow.o release\mygl.o release\camera.o release\scene.o release\drawable.o release\glwidget277.o release\shaderprogram.o release\intersection.o release\ray.o release\transform.o release\tiny_obj_loader.o release\film.o release\cameracontrolshelp.o release\jsonreader.o release\mattematerial.o release\bsdf.o release\directlightingintegrator.o release\sphere.o release\glshapecreation.o release\integrator.o release\squareplane.o release\sampler.o release\shape.o release\cube.o release\disc.o release\mesh.o release\warpfunctions.o release\lambertbrdf.o release\primitive.o release\light.o release\diffusearealight.o release\naiveintegrator.o release\mirrormaterial.o release\specularbrdf.o release\fresnel.o release\glassmaterial.o release\transmissivematerial.o release\specularbtdf.o release\fulllightingintegrator.o release\microfacet.o release\microfacetbrdf.o release\plasticmaterial.o release\qrc_glsl.o release\qrc_sfx.o release\moc_mainwindow.o release\moc_mygl.o release\moc_glwidget277.o release\moc_cameracontrolshelp.o
+	-$(DEL_FILE) release\main.o release\mainwindow.o release\mygl.o release\camera.o release\scene.o release\drawable.o release\glwidget277.o release\shaderprogram.o release\intersection.o release\ray.o release\transform.o release\tiny_obj_loader.o release\film.o release\cameracontrolshelp.o release\jsonreader.o release\mattematerial.o release\bsdf.o release\directlightingintegrator.o release\sphere.o release\glshapecreation.o release\integrator.o release\squareplane.o release\sampler.o release\shape.o release\cube.o release\disc.o release\mesh.o release\warpfunctions.o release\lambertbrdf.o release\primitive.o release\light.o release\diffusearealight.o release\naiveintegrator.o release\mirrormaterial.o release\specularbrdf.o release\fresnel.o release\glassmaterial.o release\transmissivematerial.o release\specularbtdf.o release\fulllightingintegrator.o release\microfacet.o release\microfacetbrdf.o release\plasticmaterial.o release\bounds.o release\bvh.o release\qrc_glsl.o release\qrc_sfx.o release\moc_mainwindow.o release\moc_mygl.o release\moc_glwidget277.o release\moc_cameracontrolshelp.o
 
 distclean: clean 
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -653,6 +661,7 @@ release/moc_mygl.cpp: D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLVertexArrayObje
 		../assignment_package/src/scene/geometry/primitive.h \
 		../assignment_package/src/scene/geometry/shape.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -669,6 +678,7 @@ release/moc_mygl.cpp: D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLVertexArrayObje
 		../assignment_package/src/integrators/integrator.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QRunnable \
 		D:/QT/5.4/mingw491_32/include/QtCore/qrunnable.h \
+		../assignment_package/src/samplers/sampler.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QTime \
 		D:/QT/5.4/mingw491_32/include/QtCore/qdatetime.h \
 		D:/QT/5.4/mingw491_32/include/QtMultimedia/QSound \
@@ -1156,6 +1166,7 @@ ui_mainwindow.h: ../assignment_package/forms/mainwindow.ui \
 		../assignment_package/src/scene/geometry/primitive.h \
 		../assignment_package/src/scene/geometry/shape.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -1172,6 +1183,7 @@ ui_mainwindow.h: ../assignment_package/forms/mainwindow.ui \
 		../assignment_package/src/integrators/integrator.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QRunnable \
 		D:/QT/5.4/mingw491_32/include/QtCore/qrunnable.h \
+		../assignment_package/src/samplers/sampler.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QTime \
 		D:/QT/5.4/mingw491_32/include/QtCore/qdatetime.h \
 		D:/QT/5.4/mingw491_32/include/QtMultimedia/QSound \
@@ -1179,8 +1191,8 @@ ui_mainwindow.h: ../assignment_package/forms/mainwindow.ui \
 		D:/QT/5.4/mingw491_32/include/QtMultimedia/qtmultimediadefs.h
 	D:\QT\5.4\mingw491_32\bin\uic.exe ..\assignment_package\forms\mainwindow.ui -o ui_mainwindow.h
 
-ui_cameracontrolshelp.h: forms/cameracontrolshelp.ui
-	D:\QT\5.4\mingw491_32\bin\uic.exe forms\cameracontrolshelp.ui -o ui_cameracontrolshelp.h
+ui_cameracontrolshelp.h: ../assignment_package/forms/cameracontrolshelp.ui
+	D:\QT\5.4\mingw491_32\bin\uic.exe ..\assignment_package\forms\cameracontrolshelp.ui -o ui_cameracontrolshelp.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1422,7 +1434,223 @@ release/mainwindow.o: ../assignment_package/src/mainwindow.cpp ../assignment_pac
 		D:/QT/5.4/mingw491_32/include/QtGui/qicon.h \
 		../assignment_package/src/cameracontrolshelp.h \
 		D:/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
-		ui_mainwindow.h
+		../assignment_package/ui_mainwindow.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QVariant \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QAction \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qaction.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qactiongroup.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QApplication \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qapplication.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcoreapplication.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qeventloop.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qdesktopwidget.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qguiapplication.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qinputmethod.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QButtonGroup \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qbuttongroup.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QCheckBox \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qcheckbox.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractbutton.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QComboBox \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qcombobox.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qstyleoption.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractspinbox.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvalidator.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qregularexpression.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qslider.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractslider.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qstyle.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qtabbar.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qrubberband.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qframe.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qabstractitemmodel.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QGridLayout \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qgridlayout.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qlayout.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qlayoutitem.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qboxlayout.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QGroupBox \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qgroupbox.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QHeaderView \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qheaderview.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractitemview.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qitemselectionmodel.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QLabel \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qlabel.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QMenu \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qmenu.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QMenuBar \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qmenubar.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QSpinBox \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qspinbox.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QVBoxLayout \
+		../assignment_package/src/mygl.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLVertexArrayObject \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglvertexarrayobject.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QObject \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopengl.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qt_windows.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopengles2ext.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglext.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLShaderProgram \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglshaderprogram.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector3d.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector4d.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qmatrix4x4.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qquaternion.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qgenericmatrix.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QRubberBand \
+		D:/QT/5.4/mingw491_32/include/QtGui/QMouseEvent \
+		../assignment_package/src/openGL/glwidget277.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QOpenGLWidget \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qopenglwidget.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QSurfaceFormat \
+		D:/QT/5.4/mingw491_32/include/QtGui/qsurfaceformat.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLFunctions_3_2_Core \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglfunctions_3_2_core.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLVersionFunctions \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglversionfunctions.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglcontext.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QScopedPointer \
+		D:/QT/5.4/mingw491_32/include/QtCore/QTimer \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtimer.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbasictimer.h \
+		../assignment_package/src/la.h \
+		../assignment_package/include/glm/glm.hpp \
+		../assignment_package/include/glm/detail/_fixes.hpp \
+		../assignment_package/include/glm/fwd.hpp \
+		../assignment_package/include/glm/detail/type_int.hpp \
+		../assignment_package/include/glm/detail/setup.hpp \
+		../assignment_package/include/glm/detail/type_float.hpp \
+		../assignment_package/include/glm/detail/type_vec.hpp \
+		../assignment_package/include/glm/detail/precision.hpp \
+		../assignment_package/include/glm/detail/type_mat.hpp \
+		../assignment_package/include/glm/vec2.hpp \
+		../assignment_package/include/glm/detail/type_vec2.hpp \
+		../assignment_package/include/glm/detail/_swizzle.hpp \
+		../assignment_package/include/glm/detail/_swizzle_func.hpp \
+		../assignment_package/include/glm/detail/type_vec2.inl \
+		../assignment_package/include/glm/vec3.hpp \
+		../assignment_package/include/glm/detail/type_vec3.hpp \
+		../assignment_package/include/glm/detail/type_vec3.inl \
+		../assignment_package/include/glm/vec4.hpp \
+		../assignment_package/include/glm/detail/type_vec4.hpp \
+		../assignment_package/include/glm/detail/type_vec4.inl \
+		../assignment_package/include/glm/mat2x2.hpp \
+		../assignment_package/include/glm/detail/type_mat2x2.hpp \
+		../assignment_package/include/glm/detail/type_mat2x2.inl \
+		../assignment_package/include/glm/mat2x3.hpp \
+		../assignment_package/include/glm/detail/type_mat2x3.hpp \
+		../assignment_package/include/glm/detail/type_mat2x3.inl \
+		../assignment_package/include/glm/mat2x4.hpp \
+		../assignment_package/include/glm/detail/type_mat2x4.hpp \
+		../assignment_package/include/glm/detail/type_mat2x4.inl \
+		../assignment_package/include/glm/mat3x2.hpp \
+		../assignment_package/include/glm/detail/type_mat3x2.hpp \
+		../assignment_package/include/glm/detail/type_mat3x2.inl \
+		../assignment_package/include/glm/mat3x3.hpp \
+		../assignment_package/include/glm/detail/type_mat3x3.hpp \
+		../assignment_package/include/glm/detail/type_mat3x3.inl \
+		../assignment_package/include/glm/mat3x4.hpp \
+		../assignment_package/include/glm/detail/type_mat3x4.hpp \
+		../assignment_package/include/glm/detail/type_mat3x4.inl \
+		../assignment_package/include/glm/mat4x2.hpp \
+		../assignment_package/include/glm/detail/type_mat4x2.hpp \
+		../assignment_package/include/glm/detail/type_mat4x2.inl \
+		../assignment_package/include/glm/mat4x3.hpp \
+		../assignment_package/include/glm/detail/type_mat4x3.hpp \
+		../assignment_package/include/glm/detail/type_mat4x3.inl \
+		../assignment_package/include/glm/mat4x4.hpp \
+		../assignment_package/include/glm/detail/type_mat4x4.hpp \
+		../assignment_package/include/glm/detail/type_mat4x4.inl \
+		../assignment_package/include/glm/trigonometric.hpp \
+		../assignment_package/include/glm/detail/func_trigonometric.hpp \
+		../assignment_package/include/glm/detail/func_trigonometric.inl \
+		../assignment_package/include/glm/detail/_vectorize.hpp \
+		../assignment_package/include/glm/detail/type_vec1.hpp \
+		../assignment_package/include/glm/detail/type_vec1.inl \
+		../assignment_package/include/glm/exponential.hpp \
+		../assignment_package/include/glm/detail/func_exponential.hpp \
+		../assignment_package/include/glm/detail/func_exponential.inl \
+		../assignment_package/include/glm/detail/func_vector_relational.hpp \
+		../assignment_package/include/glm/detail/func_vector_relational.inl \
+		../assignment_package/include/glm/common.hpp \
+		../assignment_package/include/glm/detail/func_common.hpp \
+		../assignment_package/include/glm/detail/func_common.inl \
+		../assignment_package/include/glm/packing.hpp \
+		../assignment_package/include/glm/detail/func_packing.hpp \
+		../assignment_package/include/glm/detail/func_packing.inl \
+		../assignment_package/include/glm/detail/type_half.hpp \
+		../assignment_package/include/glm/detail/type_half.inl \
+		../assignment_package/include/glm/geometric.hpp \
+		../assignment_package/include/glm/detail/func_geometric.hpp \
+		../assignment_package/include/glm/detail/func_geometric.inl \
+		../assignment_package/include/glm/matrix.hpp \
+		../assignment_package/include/glm/detail/func_matrix.hpp \
+		../assignment_package/include/glm/detail/func_matrix.inl \
+		../assignment_package/include/glm/vector_relational.hpp \
+		../assignment_package/include/glm/integer.hpp \
+		../assignment_package/include/glm/detail/func_integer.hpp \
+		../assignment_package/include/glm/detail/func_integer.inl \
+		../assignment_package/include/glm/gtc/matrix_transform.hpp \
+		../assignment_package/include/glm/gtc/constants.hpp \
+		../assignment_package/include/glm/gtc/constants.inl \
+		../assignment_package/include/glm/gtc/matrix_transform.inl \
+		../assignment_package/include/glm/gtx/string_cast.hpp \
+		../assignment_package/include/glm/gtx/integer.hpp \
+		../assignment_package/include/glm/gtx/integer.inl \
+		../assignment_package/include/glm/gtx/quaternion.hpp \
+		../assignment_package/include/glm/gtc/quaternion.hpp \
+		../assignment_package/include/glm/gtx/quaternion.inl \
+		../assignment_package/include/glm/gtx/norm.hpp \
+		../assignment_package/include/glm/gtx/norm.inl \
+		../assignment_package/include/glm/gtx/string_cast.inl \
+		../assignment_package/include/glm/gtc/type_ptr.hpp \
+		../assignment_package/include/glm/gtc/type_ptr.inl \
+		D:/QT/5.4/mingw491_32/include/QtGui/QMatrix4x4 \
+		../assignment_package/src/openGL/shaderprogram.h \
+		../assignment_package/src/openGL/drawable.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLBuffer \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
+		../assignment_package/src/scene/transform.h \
+		../assignment_package/src/globals.h \
+		../assignment_package/include/pcg32.h \
+		../assignment_package/src/scene/camera.h \
+		../assignment_package/src/raytracing/ray.h \
+		../assignment_package/src/scene/scene.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QList \
+		../assignment_package/src/raytracing/film.h \
+		../assignment_package/src/scene/lights/light.h \
+		../assignment_package/src/raytracing/intersection.h \
+		../assignment_package/src/scene/materials/bsdf.h \
+		../assignment_package/src/scene/geometry/primitive.h \
+		../assignment_package/src/scene/geometry/shape.h \
+		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
+		../assignment_package/src/scene/materials/material.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
+		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
+		../assignment_package/src/scene/bvh.h \
+		../assignment_package/src/scene/jsonreader.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QJsonObject \
+		D:/QT/5.4/mingw491_32/include/QtCore/qjsonobject.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qjsonvalue.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QJsonArray \
+		D:/QT/5.4/mingw491_32/include/QtCore/qjsonarray.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QJsonDocument \
+		D:/QT/5.4/mingw491_32/include/QtCore/qjsondocument.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QFile \
+		../assignment_package/src/integrators/integrator.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QRunnable \
+		D:/QT/5.4/mingw491_32/include/QtCore/qrunnable.h \
+		../assignment_package/src/samplers/sampler.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QTime \
+		D:/QT/5.4/mingw491_32/include/QtCore/qdatetime.h \
+		D:/QT/5.4/mingw491_32/include/QtMultimedia/QSound \
+		D:/QT/5.4/mingw491_32/include/QtMultimedia/qsound.h \
+		D:/QT/5.4/mingw491_32/include/QtMultimedia/qtmultimediadefs.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\assignment_package\src\mainwindow.cpp
 
 release/mygl.o: ../assignment_package/src/mygl.cpp ../assignment_package/src/mygl.h \
@@ -1670,6 +1898,7 @@ release/mygl.o: ../assignment_package/src/mygl.cpp ../assignment_package/src/myg
 		../assignment_package/src/scene/geometry/primitive.h \
 		../assignment_package/src/scene/geometry/shape.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -1686,6 +1915,7 @@ release/mygl.o: ../assignment_package/src/mygl.cpp ../assignment_package/src/myg
 		../assignment_package/src/integrators/integrator.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QRunnable \
 		D:/QT/5.4/mingw491_32/include/QtCore/qrunnable.h \
+		../assignment_package/src/samplers/sampler.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QTime \
 		D:/QT/5.4/mingw491_32/include/QtCore/qdatetime.h \
 		D:/QT/5.4/mingw491_32/include/QtMultimedia/QSound \
@@ -2187,11 +2417,11 @@ release/scene.o: ../assignment_package/src/scene/scene.cpp ../assignment_package
 		../assignment_package/src/scene/geometry/primitive.h \
 		../assignment_package/src/scene/geometry/shape.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		../assignment_package/src/scene/bvh.h \
-		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/geometry/sphere.h \
 		../assignment_package/src/scene/geometry/mesh.h \
 		../assignment_package/src/scene/geometry/squareplane.h \
@@ -2425,7 +2655,9 @@ release/drawable.o: ../assignment_package/src/openGL/drawable.cpp ../assignment_
 		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/src/globals.h \
-		../assignment_package/include/pcg32.h
+		../assignment_package/include/pcg32.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QDateTime \
+		D:/QT/5.4/mingw491_32/include/QtCore/qdatetime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\drawable.o ..\assignment_package\src\openGL\drawable.cpp
 
 release/glwidget277.o: ../assignment_package/src/openGL/glwidget277.cpp ../assignment_package/src/openGL/glwidget277.h \
@@ -3123,6 +3355,7 @@ release/intersection.o: ../assignment_package/src/raytracing/intersection.cpp ..
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -3764,7 +3997,42 @@ release/cameracontrolshelp.o: ../assignment_package/src/cameracontrolshelp.cpp .
 		D:/QT/5.4/mingw491_32/include/QtCore/qfiledevice.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/qvector2d.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/qtouchdevice.h \
-		ui_cameracontrolshelp.h
+		../assignment_package/ui_cameracontrolshelp.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QVariant \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QAction \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qaction.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qicon.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qactiongroup.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QApplication \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qapplication.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcoreapplication.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qeventloop.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qdesktopwidget.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qguiapplication.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qinputmethod.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QButtonGroup \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qbuttongroup.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QFrame \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qframe.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QHeaderView \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qheaderview.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractitemview.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qabstractitemmodel.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qitemselectionmodel.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractitemdelegate.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qstyleoption.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractspinbox.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvalidator.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qregularexpression.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qslider.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qabstractslider.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qstyle.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qtabbar.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qtabwidget.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qrubberband.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QLabel \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qlabel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\cameracontrolshelp.o ..\assignment_package\src\cameracontrolshelp.cpp
 
 release/jsonreader.o: ../assignment_package/src/scene/jsonreader.cpp ../assignment_package/src/scene/jsonreader.h \
@@ -4014,11 +4282,11 @@ release/jsonreader.o: ../assignment_package/src/scene/jsonreader.cpp ../assignme
 		../assignment_package/src/scene/geometry/primitive.h \
 		../assignment_package/src/scene/geometry/shape.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		../assignment_package/src/scene/bvh.h \
-		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/geometry/sphere.h \
 		../assignment_package/src/scene/geometry/mesh.h \
 		../assignment_package/src/scene/geometry/disc.h \
@@ -4266,6 +4534,7 @@ release/mattematerial.o: ../assignment_package/src/scene/materials/mattematerial
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -4506,6 +4775,7 @@ release/bsdf.o: ../assignment_package/src/scene/materials/bsdf.cpp ../assignment
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -4756,10 +5026,12 @@ release/directlightingintegrator.o: ../assignment_package/src/integrators/direct
 		../assignment_package/src/scene/geometry/primitive.h \
 		../assignment_package/src/scene/geometry/shape.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
-		../assignment_package/src/scene/bvh.h
+		../assignment_package/src/scene/bvh.h \
+		../assignment_package/src/samplers/sampler.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\directlightingintegrator.o ..\assignment_package\src\integrators\directlightingintegrator.cpp
 
 release/sphere.o: ../assignment_package/src/scene/geometry/sphere.cpp ../assignment_package/src/scene/geometry/sphere.h \
@@ -4955,6 +5227,7 @@ release/sphere.o: ../assignment_package/src/scene/geometry/sphere.cpp ../assignm
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		../assignment_package/src/openGL/drawable.h \
 		../assignment_package/src/openGL/glwidget277.h \
@@ -5197,6 +5470,7 @@ release/glshapecreation.o: ../assignment_package/src/scene/geometry/glshapecreat
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		../assignment_package/src/openGL/drawable.h \
 		../assignment_package/src/openGL/glwidget277.h \
@@ -5244,7 +5518,6 @@ release/glshapecreation.o: ../assignment_package/src/scene/geometry/glshapecreat
 		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/geometry/squareplane.h \
-		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/geometry/disc.h \
 		../assignment_package/src/scene/geometry/mesh.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\glshapecreation.o ..\assignment_package\src\scene\geometry\glshapecreation.cpp
@@ -5490,10 +5763,12 @@ release/integrator.o: ../assignment_package/src/integrators/integrator.cpp ../as
 		../assignment_package/src/scene/geometry/primitive.h \
 		../assignment_package/src/scene/geometry/shape.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
-		../assignment_package/src/scene/bvh.h
+		../assignment_package/src/scene/bvh.h \
+		../assignment_package/src/samplers/sampler.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\integrator.o ..\assignment_package\src\integrators\integrator.cpp
 
 release/squareplane.o: ../assignment_package/src/scene/geometry/squareplane.cpp ../assignment_package/src/scene/geometry/squareplane.h \
@@ -5689,6 +5964,7 @@ release/squareplane.o: ../assignment_package/src/scene/geometry/squareplane.cpp 
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		../assignment_package/src/openGL/drawable.h \
 		../assignment_package/src/openGL/glwidget277.h \
@@ -5737,7 +6013,176 @@ release/squareplane.o: ../assignment_package/src/scene/geometry/squareplane.cpp 
 		../assignment_package/include/pcg32.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\squareplane.o ..\assignment_package\src\scene\geometry\squareplane.cpp
 
-release/sampler.o: ../assignment_package/src/samplers/sampler.cpp 
+release/sampler.o: ../assignment_package/src/samplers/sampler.cpp ../assignment_package/src/samplers/sampler.h \
+		../assignment_package/src/globals.h \
+		../assignment_package/src/la.h \
+		../assignment_package/include/glm/glm.hpp \
+		../assignment_package/include/glm/detail/_fixes.hpp \
+		../assignment_package/include/glm/fwd.hpp \
+		../assignment_package/include/glm/detail/type_int.hpp \
+		../assignment_package/include/glm/detail/setup.hpp \
+		../assignment_package/include/glm/detail/type_float.hpp \
+		../assignment_package/include/glm/detail/type_vec.hpp \
+		../assignment_package/include/glm/detail/precision.hpp \
+		../assignment_package/include/glm/detail/type_mat.hpp \
+		../assignment_package/include/glm/vec2.hpp \
+		../assignment_package/include/glm/detail/type_vec2.hpp \
+		../assignment_package/include/glm/detail/_swizzle.hpp \
+		../assignment_package/include/glm/detail/_swizzle_func.hpp \
+		../assignment_package/include/glm/detail/type_vec2.inl \
+		../assignment_package/include/glm/vec3.hpp \
+		../assignment_package/include/glm/detail/type_vec3.hpp \
+		../assignment_package/include/glm/detail/type_vec3.inl \
+		../assignment_package/include/glm/vec4.hpp \
+		../assignment_package/include/glm/detail/type_vec4.hpp \
+		../assignment_package/include/glm/detail/type_vec4.inl \
+		../assignment_package/include/glm/mat2x2.hpp \
+		../assignment_package/include/glm/detail/type_mat2x2.hpp \
+		../assignment_package/include/glm/detail/type_mat2x2.inl \
+		../assignment_package/include/glm/mat2x3.hpp \
+		../assignment_package/include/glm/detail/type_mat2x3.hpp \
+		../assignment_package/include/glm/detail/type_mat2x3.inl \
+		../assignment_package/include/glm/mat2x4.hpp \
+		../assignment_package/include/glm/detail/type_mat2x4.hpp \
+		../assignment_package/include/glm/detail/type_mat2x4.inl \
+		../assignment_package/include/glm/mat3x2.hpp \
+		../assignment_package/include/glm/detail/type_mat3x2.hpp \
+		../assignment_package/include/glm/detail/type_mat3x2.inl \
+		../assignment_package/include/glm/mat3x3.hpp \
+		../assignment_package/include/glm/detail/type_mat3x3.hpp \
+		../assignment_package/include/glm/detail/type_mat3x3.inl \
+		../assignment_package/include/glm/mat3x4.hpp \
+		../assignment_package/include/glm/detail/type_mat3x4.hpp \
+		../assignment_package/include/glm/detail/type_mat3x4.inl \
+		../assignment_package/include/glm/mat4x2.hpp \
+		../assignment_package/include/glm/detail/type_mat4x2.hpp \
+		../assignment_package/include/glm/detail/type_mat4x2.inl \
+		../assignment_package/include/glm/mat4x3.hpp \
+		../assignment_package/include/glm/detail/type_mat4x3.hpp \
+		../assignment_package/include/glm/detail/type_mat4x3.inl \
+		../assignment_package/include/glm/mat4x4.hpp \
+		../assignment_package/include/glm/detail/type_mat4x4.hpp \
+		../assignment_package/include/glm/detail/type_mat4x4.inl \
+		../assignment_package/include/glm/trigonometric.hpp \
+		../assignment_package/include/glm/detail/func_trigonometric.hpp \
+		../assignment_package/include/glm/detail/func_trigonometric.inl \
+		../assignment_package/include/glm/detail/_vectorize.hpp \
+		../assignment_package/include/glm/detail/type_vec1.hpp \
+		../assignment_package/include/glm/detail/type_vec1.inl \
+		../assignment_package/include/glm/exponential.hpp \
+		../assignment_package/include/glm/detail/func_exponential.hpp \
+		../assignment_package/include/glm/detail/func_exponential.inl \
+		../assignment_package/include/glm/detail/func_vector_relational.hpp \
+		../assignment_package/include/glm/detail/func_vector_relational.inl \
+		../assignment_package/include/glm/common.hpp \
+		../assignment_package/include/glm/detail/func_common.hpp \
+		../assignment_package/include/glm/detail/func_common.inl \
+		../assignment_package/include/glm/packing.hpp \
+		../assignment_package/include/glm/detail/func_packing.hpp \
+		../assignment_package/include/glm/detail/func_packing.inl \
+		../assignment_package/include/glm/detail/type_half.hpp \
+		../assignment_package/include/glm/detail/type_half.inl \
+		../assignment_package/include/glm/geometric.hpp \
+		../assignment_package/include/glm/detail/func_geometric.hpp \
+		../assignment_package/include/glm/detail/func_geometric.inl \
+		../assignment_package/include/glm/matrix.hpp \
+		../assignment_package/include/glm/detail/func_matrix.hpp \
+		../assignment_package/include/glm/detail/func_matrix.inl \
+		../assignment_package/include/glm/vector_relational.hpp \
+		../assignment_package/include/glm/integer.hpp \
+		../assignment_package/include/glm/detail/func_integer.hpp \
+		../assignment_package/include/glm/detail/func_integer.inl \
+		../assignment_package/include/glm/gtc/matrix_transform.hpp \
+		../assignment_package/include/glm/gtc/constants.hpp \
+		../assignment_package/include/glm/gtc/constants.inl \
+		../assignment_package/include/glm/gtc/matrix_transform.inl \
+		../assignment_package/include/glm/gtx/string_cast.hpp \
+		../assignment_package/include/glm/gtx/integer.hpp \
+		../assignment_package/include/glm/gtx/integer.inl \
+		../assignment_package/include/glm/gtx/quaternion.hpp \
+		../assignment_package/include/glm/gtc/quaternion.hpp \
+		../assignment_package/include/glm/gtx/quaternion.inl \
+		../assignment_package/include/glm/gtx/norm.hpp \
+		../assignment_package/include/glm/gtx/norm.inl \
+		../assignment_package/include/glm/gtx/string_cast.inl \
+		../assignment_package/include/glm/gtc/type_ptr.hpp \
+		../assignment_package/include/glm/gtc/type_ptr.inl \
+		D:/QT/5.4/mingw491_32/include/QtGui/QMatrix4x4 \
+		D:/QT/5.4/mingw491_32/include/QtGui/qmatrix4x4.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector3d.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qpoint.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qnamespace.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qglobal.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qconfig.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qfeatures.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsystemdetection.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qprocessordetection.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcompilerdetection.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtypeinfo.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtypetraits.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsysinfo.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qlogging.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qflags.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbasicatomic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_bootstrap.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qgenericatomic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_msvc.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_armv7.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_armv6.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_armv5.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_ia64.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_mips.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_x86.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_cxx11.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_gcc.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_unix.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qglobalstatic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmutex.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qnumeric.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmetatype.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbytearray.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qrefcount.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qarraydata.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstring.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qchar.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstringbuilder.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qvarlengtharray.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcontainerfwd.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qalgorithms.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qisenum.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobjectdefs.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobjectdefs_impl.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector4d.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qquaternion.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qgenericmatrix.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qdebug.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qhash.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qiterator.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qlist.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbytearraylist.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qpair.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmap.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtextstream.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qiodevice.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobject.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcoreevent.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qscopedpointer.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobject_impl.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qlocale.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qvariant.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstringlist.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qdatastream.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qregexp.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstringmatcher.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qshareddata.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qvector.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qset.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcontiguouscache.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qrect.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmargins.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsize.h \
+		../assignment_package/include/pcg32.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\sampler.o ..\assignment_package\src\samplers\sampler.cpp
 
 release/shape.o: ../assignment_package/src/scene/geometry/shape.cpp ../assignment_package/src/scene/geometry/shape.h \
@@ -5932,6 +6377,7 @@ release/shape.o: ../assignment_package/src/scene/geometry/shape.cpp ../assignmen
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		../assignment_package/src/openGL/drawable.h \
 		../assignment_package/src/openGL/glwidget277.h \
@@ -5977,9 +6423,7 @@ release/shape.o: ../assignment_package/src/scene/geometry/shape.cpp ../assignmen
 		D:/QT/5.4/mingw491_32/include/QtGui/qopenglshaderprogram.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLBuffer \
 		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
-		../assignment_package/include/pcg32.h \
-		D:/QT/5.4/mingw491_32/include/QtCore/QDateTime \
-		D:/QT/5.4/mingw491_32/include/QtCore/qdatetime.h
+		../assignment_package/include/pcg32.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\shape.o ..\assignment_package\src\scene\geometry\shape.cpp
 
 release/cube.o: ../assignment_package/src/scene/geometry/cube.cpp ../assignment_package/src/scene/geometry/cube.h \
@@ -6416,6 +6860,7 @@ release/disc.o: ../assignment_package/src/scene/geometry/disc.cpp ../assignment_
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		../assignment_package/src/openGL/drawable.h \
 		../assignment_package/src/openGL/glwidget277.h \
@@ -6658,6 +7103,7 @@ release/mesh.o: ../assignment_package/src/scene/geometry/mesh.cpp ../assignment_
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		../assignment_package/src/openGL/drawable.h \
 		../assignment_package/src/openGL/glwidget277.h \
@@ -7112,6 +7558,7 @@ release/lambertbrdf.o: ../assignment_package/src/scene/materials/lambertbrdf.cpp
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -7354,6 +7801,7 @@ release/primitive.o: ../assignment_package/src/scene/geometry/primitive.cpp ../a
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -7594,6 +8042,7 @@ release/light.o: ../assignment_package/src/scene/lights/light.cpp ../assignment_
 		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -7835,6 +8284,7 @@ release/diffusearealight.o: ../assignment_package/src/scene/lights/diffuseareali
 		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -8083,10 +8533,12 @@ release/naiveintegrator.o: ../assignment_package/src/integrators/naiveintegrator
 		../assignment_package/src/scene/geometry/primitive.h \
 		../assignment_package/src/scene/geometry/shape.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
-		../assignment_package/src/scene/bvh.h
+		../assignment_package/src/scene/bvh.h \
+		../assignment_package/src/samplers/sampler.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\naiveintegrator.o ..\assignment_package\src\integrators\naiveintegrator.cpp
 
 release/mirrormaterial.o: ../assignment_package/src/scene/materials/mirrormaterial.cpp ../assignment_package/src/scene/materials/mirrormaterial.h \
@@ -8324,6 +8776,7 @@ release/mirrormaterial.o: ../assignment_package/src/scene/materials/mirrormateri
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -8568,6 +9021,7 @@ release/specularbrdf.o: ../assignment_package/src/scene/materials/specularbrdf.c
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -8982,6 +9436,7 @@ release/glassmaterial.o: ../assignment_package/src/scene/materials/glassmaterial
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -9226,6 +9681,7 @@ release/transmissivematerial.o: ../assignment_package/src/scene/materials/transm
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -9468,6 +9924,7 @@ release/specularbtdf.o: ../assignment_package/src/scene/materials/specularbtdf.c
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -9718,10 +10175,12 @@ release/fulllightingintegrator.o: ../assignment_package/src/integrators/fullligh
 		../assignment_package/src/scene/geometry/primitive.h \
 		../assignment_package/src/scene/geometry/shape.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
-		../assignment_package/src/scene/bvh.h
+		../assignment_package/src/scene/bvh.h \
+		../assignment_package/src/samplers/sampler.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\fulllightingintegrator.o ..\assignment_package\src\integrators\fulllightingintegrator.cpp
 
 release/microfacet.o: ../assignment_package/src/scene/materials/microfacet.cpp ../assignment_package/src/scene/materials/microfacet.h \
@@ -10129,6 +10588,7 @@ release/microfacetbrdf.o: ../assignment_package/src/scene/materials/microfacetbr
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		../assignment_package/src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -10373,6 +10833,7 @@ release/plasticmaterial.o: ../assignment_package/src/scene/materials/plasticmate
 		../assignment_package/src/scene/transform.h \
 		../assignment_package/include/pcg32.h \
 		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
 		../assignment_package/src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -10382,6 +10843,489 @@ release/plasticmaterial.o: ../assignment_package/src/scene/materials/plasticmate
 		../assignment_package/src/scene/materials/microfacetbrdf.h \
 		../assignment_package/src/scene/materials/microfacet.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\plasticmaterial.o ..\assignment_package\src\scene\materials\plasticmaterial.cpp
+
+release/bounds.o: ../assignment_package/src/scene/bounds.cpp ../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/globals.h \
+		../assignment_package/src/la.h \
+		../assignment_package/include/glm/glm.hpp \
+		../assignment_package/include/glm/detail/_fixes.hpp \
+		../assignment_package/include/glm/fwd.hpp \
+		../assignment_package/include/glm/detail/type_int.hpp \
+		../assignment_package/include/glm/detail/setup.hpp \
+		../assignment_package/include/glm/detail/type_float.hpp \
+		../assignment_package/include/glm/detail/type_vec.hpp \
+		../assignment_package/include/glm/detail/precision.hpp \
+		../assignment_package/include/glm/detail/type_mat.hpp \
+		../assignment_package/include/glm/vec2.hpp \
+		../assignment_package/include/glm/detail/type_vec2.hpp \
+		../assignment_package/include/glm/detail/_swizzle.hpp \
+		../assignment_package/include/glm/detail/_swizzle_func.hpp \
+		../assignment_package/include/glm/detail/type_vec2.inl \
+		../assignment_package/include/glm/vec3.hpp \
+		../assignment_package/include/glm/detail/type_vec3.hpp \
+		../assignment_package/include/glm/detail/type_vec3.inl \
+		../assignment_package/include/glm/vec4.hpp \
+		../assignment_package/include/glm/detail/type_vec4.hpp \
+		../assignment_package/include/glm/detail/type_vec4.inl \
+		../assignment_package/include/glm/mat2x2.hpp \
+		../assignment_package/include/glm/detail/type_mat2x2.hpp \
+		../assignment_package/include/glm/detail/type_mat2x2.inl \
+		../assignment_package/include/glm/mat2x3.hpp \
+		../assignment_package/include/glm/detail/type_mat2x3.hpp \
+		../assignment_package/include/glm/detail/type_mat2x3.inl \
+		../assignment_package/include/glm/mat2x4.hpp \
+		../assignment_package/include/glm/detail/type_mat2x4.hpp \
+		../assignment_package/include/glm/detail/type_mat2x4.inl \
+		../assignment_package/include/glm/mat3x2.hpp \
+		../assignment_package/include/glm/detail/type_mat3x2.hpp \
+		../assignment_package/include/glm/detail/type_mat3x2.inl \
+		../assignment_package/include/glm/mat3x3.hpp \
+		../assignment_package/include/glm/detail/type_mat3x3.hpp \
+		../assignment_package/include/glm/detail/type_mat3x3.inl \
+		../assignment_package/include/glm/mat3x4.hpp \
+		../assignment_package/include/glm/detail/type_mat3x4.hpp \
+		../assignment_package/include/glm/detail/type_mat3x4.inl \
+		../assignment_package/include/glm/mat4x2.hpp \
+		../assignment_package/include/glm/detail/type_mat4x2.hpp \
+		../assignment_package/include/glm/detail/type_mat4x2.inl \
+		../assignment_package/include/glm/mat4x3.hpp \
+		../assignment_package/include/glm/detail/type_mat4x3.hpp \
+		../assignment_package/include/glm/detail/type_mat4x3.inl \
+		../assignment_package/include/glm/mat4x4.hpp \
+		../assignment_package/include/glm/detail/type_mat4x4.hpp \
+		../assignment_package/include/glm/detail/type_mat4x4.inl \
+		../assignment_package/include/glm/trigonometric.hpp \
+		../assignment_package/include/glm/detail/func_trigonometric.hpp \
+		../assignment_package/include/glm/detail/func_trigonometric.inl \
+		../assignment_package/include/glm/detail/_vectorize.hpp \
+		../assignment_package/include/glm/detail/type_vec1.hpp \
+		../assignment_package/include/glm/detail/type_vec1.inl \
+		../assignment_package/include/glm/exponential.hpp \
+		../assignment_package/include/glm/detail/func_exponential.hpp \
+		../assignment_package/include/glm/detail/func_exponential.inl \
+		../assignment_package/include/glm/detail/func_vector_relational.hpp \
+		../assignment_package/include/glm/detail/func_vector_relational.inl \
+		../assignment_package/include/glm/common.hpp \
+		../assignment_package/include/glm/detail/func_common.hpp \
+		../assignment_package/include/glm/detail/func_common.inl \
+		../assignment_package/include/glm/packing.hpp \
+		../assignment_package/include/glm/detail/func_packing.hpp \
+		../assignment_package/include/glm/detail/func_packing.inl \
+		../assignment_package/include/glm/detail/type_half.hpp \
+		../assignment_package/include/glm/detail/type_half.inl \
+		../assignment_package/include/glm/geometric.hpp \
+		../assignment_package/include/glm/detail/func_geometric.hpp \
+		../assignment_package/include/glm/detail/func_geometric.inl \
+		../assignment_package/include/glm/matrix.hpp \
+		../assignment_package/include/glm/detail/func_matrix.hpp \
+		../assignment_package/include/glm/detail/func_matrix.inl \
+		../assignment_package/include/glm/vector_relational.hpp \
+		../assignment_package/include/glm/integer.hpp \
+		../assignment_package/include/glm/detail/func_integer.hpp \
+		../assignment_package/include/glm/detail/func_integer.inl \
+		../assignment_package/include/glm/gtc/matrix_transform.hpp \
+		../assignment_package/include/glm/gtc/constants.hpp \
+		../assignment_package/include/glm/gtc/constants.inl \
+		../assignment_package/include/glm/gtc/matrix_transform.inl \
+		../assignment_package/include/glm/gtx/string_cast.hpp \
+		../assignment_package/include/glm/gtx/integer.hpp \
+		../assignment_package/include/glm/gtx/integer.inl \
+		../assignment_package/include/glm/gtx/quaternion.hpp \
+		../assignment_package/include/glm/gtc/quaternion.hpp \
+		../assignment_package/include/glm/gtx/quaternion.inl \
+		../assignment_package/include/glm/gtx/norm.hpp \
+		../assignment_package/include/glm/gtx/norm.inl \
+		../assignment_package/include/glm/gtx/string_cast.inl \
+		../assignment_package/include/glm/gtc/type_ptr.hpp \
+		../assignment_package/include/glm/gtc/type_ptr.inl \
+		D:/QT/5.4/mingw491_32/include/QtGui/QMatrix4x4 \
+		D:/QT/5.4/mingw491_32/include/QtGui/qmatrix4x4.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector3d.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qpoint.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qnamespace.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qglobal.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qconfig.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qfeatures.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsystemdetection.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qprocessordetection.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcompilerdetection.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtypeinfo.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtypetraits.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsysinfo.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qlogging.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qflags.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbasicatomic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_bootstrap.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qgenericatomic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_msvc.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_armv7.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_armv6.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_armv5.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_ia64.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_mips.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_x86.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_cxx11.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_gcc.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_unix.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qglobalstatic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmutex.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qnumeric.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmetatype.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbytearray.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qrefcount.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qarraydata.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstring.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qchar.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstringbuilder.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qvarlengtharray.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcontainerfwd.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qalgorithms.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qisenum.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobjectdefs.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobjectdefs_impl.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector4d.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qquaternion.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qgenericmatrix.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qdebug.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qhash.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qiterator.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qlist.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbytearraylist.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qpair.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmap.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtextstream.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qiodevice.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobject.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcoreevent.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qscopedpointer.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobject_impl.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qlocale.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qvariant.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstringlist.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qdatastream.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qregexp.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstringmatcher.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qshareddata.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qvector.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qset.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcontiguouscache.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qrect.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmargins.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsize.h \
+		../assignment_package/src/scene/transform.h \
+		../assignment_package/src/raytracing/ray.h \
+		../assignment_package/src/scene/geometry/cube.h \
+		../assignment_package/src/scene/geometry/shape.h \
+		../assignment_package/src/raytracing/intersection.h \
+		../assignment_package/src/scene/materials/bsdf.h \
+		../assignment_package/src/scene/geometry/primitive.h \
+		../assignment_package/src/scene/lights/light.h \
+		../assignment_package/src/scene/materials/material.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
+		D:/QT/5.4/mingw491_32/include/QtGui/qimage.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qtransform.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qmatrix.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpolygon.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qregion.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qwindowdefs.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qwindowdefs_win.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qline.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpainterpath.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpaintdevice.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qrgb.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpixelformat.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
+		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QList \
+		../assignment_package/src/openGL/drawable.h \
+		../assignment_package/src/openGL/glwidget277.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QOpenGLWidget \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qopenglwidget.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qwidget.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpalette.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qbrush.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpixmap.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsharedpointer.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsharedpointer_impl.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qfont.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qfontmetrics.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qfontinfo.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qsizepolicy.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qcursor.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qkeysequence.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qevent.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qurl.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qurlquery.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qfile.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qfiledevice.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector2d.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qtouchdevice.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QSurfaceFormat \
+		D:/QT/5.4/mingw491_32/include/QtGui/qsurfaceformat.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopengl.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qt_windows.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopengles2ext.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglext.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLFunctions_3_2_Core \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglfunctions_3_2_core.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLVersionFunctions \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglversionfunctions.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglcontext.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QObject \
+		D:/QT/5.4/mingw491_32/include/QtCore/QScopedPointer \
+		D:/QT/5.4/mingw491_32/include/QtCore/QTimer \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtimer.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbasictimer.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLShaderProgram \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglshaderprogram.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLBuffer \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
+		../assignment_package/include/pcg32.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\bounds.o ..\assignment_package\src\scene\bounds.cpp
+
+release/bvh.o: ../assignment_package/src/scene/bvh.cpp ../assignment_package/src/scene/bvh.h \
+		../assignment_package/src/scene/geometry/primitive.h \
+		../assignment_package/src/scene/geometry/shape.h \
+		../assignment_package/src/globals.h \
+		../assignment_package/src/la.h \
+		../assignment_package/include/glm/glm.hpp \
+		../assignment_package/include/glm/detail/_fixes.hpp \
+		../assignment_package/include/glm/fwd.hpp \
+		../assignment_package/include/glm/detail/type_int.hpp \
+		../assignment_package/include/glm/detail/setup.hpp \
+		../assignment_package/include/glm/detail/type_float.hpp \
+		../assignment_package/include/glm/detail/type_vec.hpp \
+		../assignment_package/include/glm/detail/precision.hpp \
+		../assignment_package/include/glm/detail/type_mat.hpp \
+		../assignment_package/include/glm/vec2.hpp \
+		../assignment_package/include/glm/detail/type_vec2.hpp \
+		../assignment_package/include/glm/detail/_swizzle.hpp \
+		../assignment_package/include/glm/detail/_swizzle_func.hpp \
+		../assignment_package/include/glm/detail/type_vec2.inl \
+		../assignment_package/include/glm/vec3.hpp \
+		../assignment_package/include/glm/detail/type_vec3.hpp \
+		../assignment_package/include/glm/detail/type_vec3.inl \
+		../assignment_package/include/glm/vec4.hpp \
+		../assignment_package/include/glm/detail/type_vec4.hpp \
+		../assignment_package/include/glm/detail/type_vec4.inl \
+		../assignment_package/include/glm/mat2x2.hpp \
+		../assignment_package/include/glm/detail/type_mat2x2.hpp \
+		../assignment_package/include/glm/detail/type_mat2x2.inl \
+		../assignment_package/include/glm/mat2x3.hpp \
+		../assignment_package/include/glm/detail/type_mat2x3.hpp \
+		../assignment_package/include/glm/detail/type_mat2x3.inl \
+		../assignment_package/include/glm/mat2x4.hpp \
+		../assignment_package/include/glm/detail/type_mat2x4.hpp \
+		../assignment_package/include/glm/detail/type_mat2x4.inl \
+		../assignment_package/include/glm/mat3x2.hpp \
+		../assignment_package/include/glm/detail/type_mat3x2.hpp \
+		../assignment_package/include/glm/detail/type_mat3x2.inl \
+		../assignment_package/include/glm/mat3x3.hpp \
+		../assignment_package/include/glm/detail/type_mat3x3.hpp \
+		../assignment_package/include/glm/detail/type_mat3x3.inl \
+		../assignment_package/include/glm/mat3x4.hpp \
+		../assignment_package/include/glm/detail/type_mat3x4.hpp \
+		../assignment_package/include/glm/detail/type_mat3x4.inl \
+		../assignment_package/include/glm/mat4x2.hpp \
+		../assignment_package/include/glm/detail/type_mat4x2.hpp \
+		../assignment_package/include/glm/detail/type_mat4x2.inl \
+		../assignment_package/include/glm/mat4x3.hpp \
+		../assignment_package/include/glm/detail/type_mat4x3.hpp \
+		../assignment_package/include/glm/detail/type_mat4x3.inl \
+		../assignment_package/include/glm/mat4x4.hpp \
+		../assignment_package/include/glm/detail/type_mat4x4.hpp \
+		../assignment_package/include/glm/detail/type_mat4x4.inl \
+		../assignment_package/include/glm/trigonometric.hpp \
+		../assignment_package/include/glm/detail/func_trigonometric.hpp \
+		../assignment_package/include/glm/detail/func_trigonometric.inl \
+		../assignment_package/include/glm/detail/_vectorize.hpp \
+		../assignment_package/include/glm/detail/type_vec1.hpp \
+		../assignment_package/include/glm/detail/type_vec1.inl \
+		../assignment_package/include/glm/exponential.hpp \
+		../assignment_package/include/glm/detail/func_exponential.hpp \
+		../assignment_package/include/glm/detail/func_exponential.inl \
+		../assignment_package/include/glm/detail/func_vector_relational.hpp \
+		../assignment_package/include/glm/detail/func_vector_relational.inl \
+		../assignment_package/include/glm/common.hpp \
+		../assignment_package/include/glm/detail/func_common.hpp \
+		../assignment_package/include/glm/detail/func_common.inl \
+		../assignment_package/include/glm/packing.hpp \
+		../assignment_package/include/glm/detail/func_packing.hpp \
+		../assignment_package/include/glm/detail/func_packing.inl \
+		../assignment_package/include/glm/detail/type_half.hpp \
+		../assignment_package/include/glm/detail/type_half.inl \
+		../assignment_package/include/glm/geometric.hpp \
+		../assignment_package/include/glm/detail/func_geometric.hpp \
+		../assignment_package/include/glm/detail/func_geometric.inl \
+		../assignment_package/include/glm/matrix.hpp \
+		../assignment_package/include/glm/detail/func_matrix.hpp \
+		../assignment_package/include/glm/detail/func_matrix.inl \
+		../assignment_package/include/glm/vector_relational.hpp \
+		../assignment_package/include/glm/integer.hpp \
+		../assignment_package/include/glm/detail/func_integer.hpp \
+		../assignment_package/include/glm/detail/func_integer.inl \
+		../assignment_package/include/glm/gtc/matrix_transform.hpp \
+		../assignment_package/include/glm/gtc/constants.hpp \
+		../assignment_package/include/glm/gtc/constants.inl \
+		../assignment_package/include/glm/gtc/matrix_transform.inl \
+		../assignment_package/include/glm/gtx/string_cast.hpp \
+		../assignment_package/include/glm/gtx/integer.hpp \
+		../assignment_package/include/glm/gtx/integer.inl \
+		../assignment_package/include/glm/gtx/quaternion.hpp \
+		../assignment_package/include/glm/gtc/quaternion.hpp \
+		../assignment_package/include/glm/gtx/quaternion.inl \
+		../assignment_package/include/glm/gtx/norm.hpp \
+		../assignment_package/include/glm/gtx/norm.inl \
+		../assignment_package/include/glm/gtx/string_cast.inl \
+		../assignment_package/include/glm/gtc/type_ptr.hpp \
+		../assignment_package/include/glm/gtc/type_ptr.inl \
+		D:/QT/5.4/mingw491_32/include/QtGui/QMatrix4x4 \
+		D:/QT/5.4/mingw491_32/include/QtGui/qmatrix4x4.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector3d.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qpoint.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qnamespace.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qglobal.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qconfig.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qfeatures.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsystemdetection.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qprocessordetection.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcompilerdetection.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtypeinfo.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtypetraits.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsysinfo.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qlogging.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qflags.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbasicatomic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_bootstrap.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qgenericatomic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_msvc.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_armv7.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_armv6.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_armv5.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_ia64.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_mips.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_x86.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_cxx11.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_gcc.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qatomic_unix.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qglobalstatic.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmutex.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qnumeric.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmetatype.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbytearray.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qrefcount.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qarraydata.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstring.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qchar.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstringbuilder.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qvarlengtharray.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcontainerfwd.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qalgorithms.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qisenum.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobjectdefs.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobjectdefs_impl.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector4d.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qquaternion.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qgenericmatrix.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qdebug.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qhash.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qiterator.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qlist.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbytearraylist.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qpair.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmap.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtextstream.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qiodevice.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobject.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcoreevent.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qscopedpointer.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qobject_impl.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qlocale.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qvariant.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstringlist.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qdatastream.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qregexp.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qstringmatcher.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qshareddata.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qvector.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qset.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qcontiguouscache.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qrect.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qmargins.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsize.h \
+		../assignment_package/src/raytracing/intersection.h \
+		../assignment_package/src/scene/materials/bsdf.h \
+		../assignment_package/src/raytracing/ray.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QList \
+		../assignment_package/src/openGL/drawable.h \
+		../assignment_package/src/openGL/glwidget277.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QOpenGLWidget \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qopenglwidget.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qwidget.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qwindowdefs.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qwindowdefs_win.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpaintdevice.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpalette.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qrgb.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qbrush.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qmatrix.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpolygon.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qregion.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qline.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qtransform.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpainterpath.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qimage.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpixelformat.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpixmap.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsharedpointer.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsharedpointer_impl.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qfont.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qfontmetrics.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qfontinfo.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qsizepolicy.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qcursor.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qkeysequence.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qevent.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qurl.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qurlquery.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qfile.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qfiledevice.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector2d.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qtouchdevice.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QSurfaceFormat \
+		D:/QT/5.4/mingw491_32/include/QtGui/qsurfaceformat.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopengl.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qt_windows.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopengles2ext.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglext.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLFunctions_3_2_Core \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglfunctions_3_2_core.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLVersionFunctions \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglversionfunctions.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglcontext.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QObject \
+		D:/QT/5.4/mingw491_32/include/QtCore/QScopedPointer \
+		D:/QT/5.4/mingw491_32/include/QtCore/QTimer \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtimer.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbasictimer.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLShaderProgram \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglshaderprogram.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLBuffer \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
+		../assignment_package/src/scene/transform.h \
+		../assignment_package/include/pcg32.h \
+		../assignment_package/src/scene/bounds.h \
+		../assignment_package/src/scene/geometry/cube.h \
+		../assignment_package/src/scene/lights/light.h \
+		../assignment_package/src/scene/materials/material.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
+		D:/QT/5.4/mingw491_32/include/QtGui/QColor
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\bvh.o ..\assignment_package\src\scene\bvh.cpp
 
 release/qrc_glsl.o: release/qrc_glsl.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qrc_glsl.o release\qrc_glsl.cpp

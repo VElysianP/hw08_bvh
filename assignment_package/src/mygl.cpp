@@ -341,11 +341,16 @@ void MyGL::SceneLoadDialog()
 
 void MyGL::RenderScene()
 {
+    QTime timeBVH;
+
     if (is_rendering) {return;}
 
     if(makeBVH && !scene.bvh)
     {
+        timeBVH.start();
         scene.bvh = new BVHAccel(scene.primitives.toVector().toStdVector(), maxBVHPrims);
+        float totalTimeBVH = timeBVH.elapsed();
+        std::cout<<"Total time for constructing the BVH tree would be: "<<totalTimeBVH<<std::endl;
     }
     else if(!makeBVH && scene.bvh)
     {

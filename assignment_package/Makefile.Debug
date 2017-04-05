@@ -661,6 +661,7 @@ debug/moc_mygl.cpp: D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLVertexArrayObject
 		src/scene/geometry/primitive.h \
 		src/scene/geometry/shape.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -1165,6 +1166,7 @@ ui_mainwindow.h: forms/mainwindow.ui \
 		src/scene/geometry/primitive.h \
 		src/scene/geometry/shape.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -1626,6 +1628,7 @@ debug/mainwindow.o: src/mainwindow.cpp src/mainwindow.h \
 		src/scene/geometry/primitive.h \
 		src/scene/geometry/shape.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -1895,6 +1898,7 @@ debug/mygl.o: src/mygl.cpp src/mygl.h \
 		src/scene/geometry/primitive.h \
 		src/scene/geometry/shape.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -2413,11 +2417,11 @@ debug/scene.o: src/scene/scene.cpp src/scene/scene.h \
 		src/scene/geometry/primitive.h \
 		src/scene/geometry/shape.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		src/scene/bvh.h \
-		src/scene/geometry/cube.h \
 		src/scene/geometry/sphere.h \
 		src/scene/geometry/mesh.h \
 		src/scene/geometry/squareplane.h \
@@ -3351,6 +3355,7 @@ debug/intersection.o: src/raytracing/intersection.cpp src/raytracing/intersectio
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -4277,11 +4282,11 @@ debug/jsonreader.o: src/scene/jsonreader.cpp src/scene/jsonreader.h \
 		src/scene/geometry/primitive.h \
 		src/scene/geometry/shape.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		src/scene/bvh.h \
-		src/scene/geometry/cube.h \
 		src/scene/geometry/sphere.h \
 		src/scene/geometry/mesh.h \
 		src/scene/geometry/disc.h \
@@ -4529,6 +4534,7 @@ debug/mattematerial.o: src/scene/materials/mattematerial.cpp src/scene/materials
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -4769,6 +4775,7 @@ debug/bsdf.o: src/scene/materials/bsdf.cpp src/scene/materials/bsdf.h \
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -5019,6 +5026,7 @@ debug/directlightingintegrator.o: src/integrators/directlightingintegrator.cpp s
 		src/scene/geometry/primitive.h \
 		src/scene/geometry/shape.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -5219,6 +5227,7 @@ debug/sphere.o: src/scene/geometry/sphere.cpp src/scene/geometry/sphere.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		src/openGL/drawable.h \
 		src/openGL/glwidget277.h \
@@ -5461,6 +5470,7 @@ debug/glshapecreation.o: src/scene/geometry/glshapecreation.cpp src/scene/geomet
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		src/openGL/drawable.h \
 		src/openGL/glwidget277.h \
@@ -5508,7 +5518,6 @@ debug/glshapecreation.o: src/scene/geometry/glshapecreation.cpp src/scene/geomet
 		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
 		include/pcg32.h \
 		src/scene/geometry/squareplane.h \
-		src/scene/geometry/cube.h \
 		src/scene/geometry/disc.h \
 		src/scene/geometry/mesh.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\glshapecreation.o src\scene\geometry\glshapecreation.cpp
@@ -5754,6 +5763,7 @@ debug/integrator.o: src/integrators/integrator.cpp src/integrators/integrator.h 
 		src/scene/geometry/primitive.h \
 		src/scene/geometry/shape.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -5954,6 +5964,7 @@ debug/squareplane.o: src/scene/geometry/squareplane.cpp src/scene/geometry/squar
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		src/openGL/drawable.h \
 		src/openGL/glwidget277.h \
@@ -6366,6 +6377,7 @@ debug/shape.o: src/scene/geometry/shape.cpp src/scene/geometry/shape.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		src/openGL/drawable.h \
 		src/openGL/glwidget277.h \
@@ -6848,6 +6860,7 @@ debug/disc.o: src/scene/geometry/disc.cpp src/scene/geometry/disc.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		src/openGL/drawable.h \
 		src/openGL/glwidget277.h \
@@ -7090,6 +7103,7 @@ debug/mesh.o: src/scene/geometry/mesh.cpp src/scene/geometry/mesh.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
 		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		src/openGL/drawable.h \
 		src/openGL/glwidget277.h \
@@ -7544,6 +7558,7 @@ debug/lambertbrdf.o: src/scene/materials/lambertbrdf.cpp src/scene/materials/lam
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -7786,6 +7801,7 @@ debug/primitive.o: src/scene/geometry/primitive.cpp src/scene/geometry/primitive
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -8026,6 +8042,7 @@ debug/light.o: src/scene/lights/light.cpp src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -8267,6 +8284,7 @@ debug/diffusearealight.o: src/scene/lights/diffusearealight.cpp src/scene/lights
 		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -8515,6 +8533,7 @@ debug/naiveintegrator.o: src/integrators/naiveintegrator.cpp src/integrators/nai
 		src/scene/geometry/primitive.h \
 		src/scene/geometry/shape.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -8757,6 +8776,7 @@ debug/mirrormaterial.o: src/scene/materials/mirrormaterial.cpp src/scene/materia
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -9001,6 +9021,7 @@ debug/specularbrdf.o: src/scene/materials/specularbrdf.cpp src/scene/materials/s
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -9415,6 +9436,7 @@ debug/glassmaterial.o: src/scene/materials/glassmaterial.cpp src/scene/materials
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -9659,6 +9681,7 @@ debug/transmissivematerial.o: src/scene/materials/transmissivematerial.cpp src/s
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -9901,6 +9924,7 @@ debug/specularbtdf.o: src/scene/materials/specularbtdf.cpp src/scene/materials/s
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -10151,6 +10175,7 @@ debug/fulllightingintegrator.o: src/integrators/fulllightingintegrator.cpp src/i
 		src/scene/geometry/primitive.h \
 		src/scene/geometry/shape.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
 		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
@@ -10563,6 +10588,7 @@ debug/microfacetbrdf.o: src/scene/materials/microfacetbrdf.cpp src/scene/materia
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -10807,6 +10833,7 @@ debug/plasticmaterial.o: src/scene/materials/plasticmaterial.cpp src/scene/mater
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/QList \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
@@ -10987,7 +11014,75 @@ debug/bounds.o: src/scene/bounds.cpp src/scene/bounds.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/qmargins.h \
 		D:/QT/5.4/mingw491_32/include/QtCore/qsize.h \
 		src/scene/transform.h \
-		src/raytracing/ray.h
+		src/raytracing/ray.h \
+		src/scene/geometry/cube.h \
+		src/scene/geometry/shape.h \
+		src/raytracing/intersection.h \
+		src/scene/materials/bsdf.h \
+		src/scene/geometry/primitive.h \
+		src/scene/lights/light.h \
+		src/scene/materials/material.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
+		D:/QT/5.4/mingw491_32/include/QtGui/qimage.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qtransform.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qmatrix.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpolygon.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qregion.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qwindowdefs.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qwindowdefs_win.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qline.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpainterpath.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpaintdevice.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qrgb.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpixelformat.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QColor \
+		D:/QT/5.4/mingw491_32/include/QtGui/qcolor.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QList \
+		src/openGL/drawable.h \
+		src/openGL/glwidget277.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QOpenGLWidget \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qopenglwidget.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/QWidget \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qwidget.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpalette.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qbrush.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qpixmap.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsharedpointer.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qsharedpointer_impl.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qfont.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qfontmetrics.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qfontinfo.h \
+		D:/QT/5.4/mingw491_32/include/QtWidgets/qsizepolicy.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qcursor.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qkeysequence.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qevent.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qurl.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qurlquery.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qfile.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qfiledevice.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qvector2d.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qtouchdevice.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QSurfaceFormat \
+		D:/QT/5.4/mingw491_32/include/QtGui/qsurfaceformat.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopengl.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qt_windows.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopengles2ext.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglext.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLFunctions_3_2_Core \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglfunctions_3_2_core.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLVersionFunctions \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglversionfunctions.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglcontext.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/QObject \
+		D:/QT/5.4/mingw491_32/include/QtCore/QScopedPointer \
+		D:/QT/5.4/mingw491_32/include/QtCore/QTimer \
+		D:/QT/5.4/mingw491_32/include/QtCore/qtimer.h \
+		D:/QT/5.4/mingw491_32/include/QtCore/qbasictimer.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLShaderProgram \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglshaderprogram.h \
+		D:/QT/5.4/mingw491_32/include/QtGui/QOpenGLBuffer \
+		D:/QT/5.4/mingw491_32/include/QtGui/qopenglbuffer.h \
+		include/pcg32.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\bounds.o src\scene\bounds.cpp
 
 debug/bvh.o: src/scene/bvh.cpp src/scene/bvh.h \
@@ -11225,6 +11320,7 @@ debug/bvh.o: src/scene/bvh.cpp src/scene/bvh.h \
 		src/scene/transform.h \
 		include/pcg32.h \
 		src/scene/bounds.h \
+		src/scene/geometry/cube.h \
 		src/scene/lights/light.h \
 		src/scene/materials/material.h \
 		D:/QT/5.4/mingw491_32/include/QtGui/QImage \
