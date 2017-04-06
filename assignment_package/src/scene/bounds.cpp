@@ -9,9 +9,9 @@ bool Bounds3f::Intersect(const Ray &r, float* t) const
 
     //x slab
 
-    if(r.direction.x==0)//parallel to x
+    if((r.direction.x>=0)&&(r.direction.x<FLT_EPSILON))//parallel to x
     {
-        if((r.origin.x<min.x)||(r.origin.x>max.x))
+        if((r.origin.y<min.y)||(r.origin.y>max.y)||(r.origin.z<min.z)||(r.origin.z>max.z))
         {
             return false;
         }
@@ -35,9 +35,9 @@ bool Bounds3f::Intersect(const Ray &r, float* t) const
     }
 
     //y slab
-    if(r.direction.y == 0)//parallel to y
+    if((r.direction.y >= 0)&&(r.direction.y < FLT_EPSILON))//parallel to y
     {
-        if((r.origin.y < min.y)||(r.origin.y > max.y))
+        if((r.origin.x < min.x)||(r.origin.x > max.x)||(r.origin.z<min.z)||(r.origin.z>max.z))
         {
             return false;
         }
@@ -60,9 +60,9 @@ bool Bounds3f::Intersect(const Ray &r, float* t) const
     }
 
     //z slab
-    if(r.direction.z == 0)//parallel to z
+    if((r.direction.z >= 0)&&(r.direction.z<FLT_EPSILON))//parallel to z
     {
-        if((r.origin.z < min.z)||(r.origin.z > max.z))
+        if((r.origin.x < min.x)||(r.origin.x > max.x)||(r.origin.y<min.y)||(r.origin.y>max.y))
         {
             return false;
         }
