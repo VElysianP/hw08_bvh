@@ -25,7 +25,23 @@ Timing (21 min)
 
 ## Full light 100 samples 5 times ##
 
+![](http://i.imgur.com/MWgofzK.png)
+
+Timing (49 min)
+
+![](http://i.imgur.com/Uk9zTcf.jpg)
+
 ## Full light 400 samples 8 times ##
 
 
-# PT_RandomScene.json #
+# PT_RandomScene1.json #
+
+## Full light 100 samples 5 times ##
+
+![](http://i.imgur.com/gKqzk2w.png)
+
+Timing (12 min)
+
+![](http://i.imgur.com/CDbc4ag.jpg)
+
+![](http://i.imgur.com/R3ZHpAl.jpg)
